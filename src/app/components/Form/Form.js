@@ -3,6 +3,12 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
 import { RiseLoader } from 'react-spinners';
+import {
+  FcVoicePresentation,
+  FcPhone,
+  FcBusiness,
+  FcAdvertising,
+} from 'react-icons/fc';
 
 export default function Form() {
   const itemBidang = [
@@ -114,8 +120,8 @@ export default function Form() {
             <div>
               <label
                 htmlFor='pelapor'
-                className='block text-sm sm:text-base font-medium text-gray-700 mb-1'>
-                Nama Pelapor
+                className='flex items-center text-sm sm:text-base font-medium text-gray-700 mb-1'>
+                <FcVoicePresentation className='w-5 h-5 mr-1.5' /> Nama Pelapor
               </label>
               <input
                 type='text'
@@ -134,8 +140,8 @@ export default function Form() {
             <div>
               <label
                 htmlFor='telepon'
-                className='block text-sm sm:text-base font-medium text-gray-700 mb-1'>
-                Telepon
+                className='flex items-center text-sm sm:text-base font-medium text-gray-700 mb-1'>
+                <FcPhone className='w-5 h-5 mr-1.5' /> Nomor Telepon
               </label>
               <input
                 type='tel'
@@ -154,8 +160,8 @@ export default function Form() {
             <div>
               <label
                 htmlFor='bidang'
-                className='block text-sm sm:text-base font-medium text-gray-700 mb-1'>
-                Bidang
+                className='flex items-center text-sm sm:text-base font-medium text-gray-700 mb-1'>
+                <FcBusiness className='w-5 h-5 mr-1.5' /> Bidang
               </label>
               <div className='relative'>
                 <select
@@ -200,8 +206,8 @@ export default function Form() {
             <div className='border-b border-gray-300 pb-6 sm:pb-7'>
               <label
                 htmlFor='aduan'
-                className='block text-sm sm:text-base font-medium text-gray-700 mb-1'>
-                Aduan
+                className='flex items-center text-sm sm:text-base font-medium text-gray-700 mb-1'>
+                <FcAdvertising className='w-5 h-5 mr-1.5' /> Aduan
               </label>
               <textarea
                 id='aduan'
