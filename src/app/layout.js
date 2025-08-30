@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import icon from '../../public/logo_bapenda.png';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -13,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: 'Form Pengaduan Bapenda',
-  description: 'Memuat Form Pengaduan Bapenda',
+  description: 'Media Pengaduan Masyarakat Indramayu',
 };
 
 export default function RootLayout({ children }) {
