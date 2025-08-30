@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import icon from '../../public/logo_bapenda.png';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
