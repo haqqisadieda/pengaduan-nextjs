@@ -18,6 +18,9 @@ export async function POST(req) {
   console.log(pendukung, token, metadata);
 
   try {
+    if (pendukung.type === 'application/octet-stream')
+      return NextResponse.json({ status: 200 }, { success: true });
+
     const response = await fetch(
       'https://www.googleapis.com/upload/drive/v3/files/?uploadType=multipart',
       {
