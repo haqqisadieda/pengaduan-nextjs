@@ -14,8 +14,6 @@ export async function POST(req) {
     day: '2-digit',
     month: 'long',
     year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
   });
 
   const namaBidang = Bidang(bidang).namaBidang;
