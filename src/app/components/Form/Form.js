@@ -334,8 +334,8 @@ export default function Form() {
                     className='w-full text-slate-500 font-medium text-sm border border-gray-300 file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-slate-500 rounded'
                   />
                   <p className='text-xs text-slate-500 mt-2 px-1'>
-                    * Silahkan kumpulkan bukti pendukung dalam berkas PDF. (Max
-                    2MB)
+                    * Silahkan kumpulkan bukti pendukung dalam satu berkas PDF.
+                    (Max 2MB)
                   </p>
                 </div>
 
