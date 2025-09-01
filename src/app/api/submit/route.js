@@ -11,7 +11,7 @@ export async function POST(req) {
   }
 
   const body = await req.json();
-  const { pelapor, telepon, bidang, aduan } = body;
+  const { pelapor, telepon, bidang, tglKejadian, aduan } = body;
   const tanggal = new Date().toLocaleDateString('id-ID', {
     day: '2-digit',
     month: 'long',
@@ -19,6 +19,17 @@ export async function POST(req) {
     hour: '2-digit',
     minute: '2-digit',
   });
+
+  const tglKejadianFormated = new Date(tglKejadian).toLocaleDateString(
+    'id-ID',
+    {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    }
+  );
 
   const namaBidang = Bidang(bidang).namaBidang;
 
@@ -33,6 +44,7 @@ export async function POST(req) {
         telepon,
         tanggal,
         bidang: namaBidang,
+        tglKejadian: tglKejadianFormated,
         aduan,
       }),
     });
