@@ -1,40 +1,53 @@
+'use server';
 import { NextResponse } from 'next/server';
+import path from 'path';
+import { writeFile } from 'fs/promises';
+import fs from 'fs';
 
 export async function POST(req) {
   if (req.method !== 'POST') {
     return NextResponse.json({ status: 405 }, { success: false });
   }
 
-  const file = new FormData();
   const filePendukung = await req.formData();
-  const token = filePendukung.get('token');
   const pendukung = filePendukung.get('pendukung');
-  const metadata = filePendukung.get('metadata');
-
-  file.append('metadata', metadata);
-  file.append('pendukung', pendukung);
-
-  console.log(filePendukung);
-  console.log(pendukung, token, metadata);
+  const pelapor = filePendukung.get('pelapor');
+  const telepon = filePendukung.get('telepon');
+  const tanggal = filePendukung.get('tanggal');
+  const extension = filePendukung.get('extension');
+  const filePath = process.cwd();
 
   try {
-    if (pendukung.type === 'application/octet-stream')
+    if (pendukung.type === 'application/octet-stream' || pendukung.name === '')
       return NextResponse.json({ status: 200 }, { success: true });
 
-    const response = await fetch(
-      'https://www.googleapis.com/upload/drive/v3/files/?uploadType=multipart',
-      {
-        method: 'POST',
-        body: file,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+    const byte = await pendukung.arrayBuffer();
+    const buffer = Buffer.from(byte);
+
+    if (
+      !fs.existsSync(
+        `${filePath}/public/pendukung/${tanggal}_${pelapor}_${telepon}`,
+        {
+          recursive: true,
+          force: true,
+        }
+      )
+    ) {
+      fs.mkdirSync(
+        `${filePath}/public/pendukung/${tanggal}_${pelapor}_${telepon}`
+      );
+    }
+
+    const file = path.join(
+      filePath,
+      'public',
+      'pendukung',
+      `${tanggal}_${pelapor}_${telepon}`,
+      `${tanggal}_${pelapor}.${extension}`
     );
 
-    const responseData = await response.json();
-
-    console.log(responseData, responseData.id);
+    console.log(file);
+    const response = await writeFile(file, buffer);
 
     return NextResponse.json({ status: 200 }, { success: true });
   } catch (error) {

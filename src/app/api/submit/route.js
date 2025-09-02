@@ -11,7 +11,7 @@ export async function POST(req) {
   }
 
   const body = await req.json();
-  const { pelapor, telepon, bidang, tglKejadian, aduan } = body;
+  const { pelapor, telepon, bidang, tglKejadian, aduan, pendukungURL } = body;
   const tanggal = new Date().toLocaleDateString('id-ID', {
     day: '2-digit',
     month: 'long',
@@ -42,6 +42,7 @@ export async function POST(req) {
         bidang: namaBidang,
         tglKejadian: tglKejadianFormated,
         aduan,
+        pendukungURL,
       }),
     });
 
